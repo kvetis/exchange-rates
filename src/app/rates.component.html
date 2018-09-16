@@ -1,0 +1,41 @@
+<form name="baseForm" (ngSubmit)="submitForm()" class="base-form">
+	<div class="form-control">
+		<label for="baseInput">Base</label>
+		<select name="base" id="baseInput" [(ngModel)]="base">
+      <option [value]="currency" *ngFor="let currency of bases">{{ currency }}</option>
+    </select>
+	</div>
+	<div class="form-control">
+		<label for="dateInput">Date</label>
+
+		<input useValueAsDate id="dateInput" type="date" name="date" [(ngModel)]="date" min="1999-01-01" max="{{ maxDate }}">
+	</div>
+  <div class="form-control">
+	  <button type="submit">Display</button>
+  </div>
+
+</form>
+
+<table class="rate-table">
+	<thead>
+		<tr>
+			<th (click)="changeSort()" class="sort">
+				Currency
+				<span [ngSwitch]="sort">
+          <ng-container *ngSwitchCase="sortOrder.Asc">&#8593;</ng-container>
+          <ng-container *ngSwitchCase="sortOrder.Desc">&#8595;</ng-container>
+          <ng-container *ngSwitchDefault>&#8645;</ng-container>
+        </span>
+			</th>
+			<th>Buy</th>
+			<th>Sell</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr *ngFor="let rate of (rateSource$ | async)" [class.base]="baseSet.has(rate.currency)">
+			<td>{{ rate.currency }}</td>
+			<td class="ar">{{ rate.buy | number:'1.4-4' }}</td>
+			<td class="ar">{{ rate.sell | number:'1.4-4' }}</td>
+		</tr>
+	</tbody>
+</table>

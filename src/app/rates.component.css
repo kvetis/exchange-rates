@@ -1,0 +1,67 @@
+:host {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.base-form {
+  display: flex;
+  flex-direction: column;
+  margin-right: 32px;
+}
+
+.form-control {
+  display: flex;
+  margin-bottom: 16px;
+  justify-content: flex-end;
+}
+
+.form-control > label {
+  width: 50px;
+}
+
+.form-control > select,
+.form-control > input,
+.form-control > button {
+  width: 150px;
+  box-sizing: border-box;
+}
+
+.rate-table {
+  border: 1px solid black;
+  border-collapse: collapse;
+  font-family: sans-serif;
+  font-size: 12px;
+}
+
+.rate-table .sort {
+  cursor: pointer;
+}
+
+.rate-table td,
+.rate-table th {
+  border-right: 1px solid black;
+  padding: 4px 8px
+}
+
+.rate-table thead {
+  font-weight: 500;
+  background-color: #bbb;
+}
+
+.rate-table tbody tr {
+  background-color: #ddd;
+}
+
+.rate-table tbody tr:nth-child(2n) {
+  background-color: #fff;
+}
+
+.rate-table tr.base {
+  color: #f00;
+}
+
+.ar {
+  text-align: right;
+}
+
